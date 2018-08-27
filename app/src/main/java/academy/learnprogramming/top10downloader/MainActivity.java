@@ -66,13 +66,14 @@ public class MainActivity extends AppCompatActivity {
                         xmlResult.append(String.copyValueOf(inputBuffer,0,charsRead));
                     }
                     reader.close();
+                    xmlResult.toString();
                 }
             }catch(MalformedURLException e){
                 Log.e(TAG, "downloadXML: Invalid URl" + e.getMessage() );
             }catch(IOException e){
                 Log.e(TAG, "downloadXML: IOException reading data" + e.getMessage() );
             }
-            return xmlResult.toString();
+            return null;
         }
     }
 }
