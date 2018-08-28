@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: starting AsyncTask");
         DownloadData downloadData = new DownloadData();
-        downloadData.execute("URL goes here");
+        // execute method call doInBackground method and passes url
+        downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
         Log.d(TAG, "onCreate: done");
     }
 
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "downloadXML: Invalid URl" + e.getMessage() );
             }catch(IOException e){
                 Log.e(TAG, "downloadXML: IOException reading data" + e.getMessage() );
+            } catch (SecurityException e){
+                Log.e(TAG, "downloadXML: Security Exception needs permission" + e.getMessage() );
             }
             return null;
         }
